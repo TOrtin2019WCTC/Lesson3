@@ -1,18 +1,13 @@
 package Lesson3Challenge1;
 
+
+
 public class Person implements Weighable {
     private String firstName;
     private String lastName;
     private int age;
-    private static String eyeColor;
-
-    public Person() {
-
-    }
-
-    public Person(String lastName) {
-        this.lastName = lastName;
-    }
+    private static final String species = "human";
+    private double weight = 0;
 
     public Person(String firstName, String lastName, int age) {
         this.firstName = firstName;
@@ -20,6 +15,10 @@ public class Person implements Weighable {
         this.age = age;
     }
 
+
+    public Person(String lastName) {
+        this.lastName = lastName;
+    }
 
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
@@ -55,22 +54,48 @@ public class Person implements Weighable {
         this.age = age;
     }
 
-    public String getEyeColor() {
-        return eyeColor;
+
+    public double getWeight() {
+        return weight;
     }
 
-    public void setEyeColor(String eyeColor) {
-        this.eyeColor = eyeColor;
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public static String getSpecies() {
+        return species;
+    }
+    @Override
+    public String toString(){
+        if (getWeight() != 0){
+            return String.format("%s %s is a %s that is %d years old, they weigh %.1f pounds.", getFirstName(), getLastName(), getSpecies(), getAge(), getWeight());
+        }else{
+            return String.format("%s %s is a %s that is %d years old.", getFirstName(), getLastName(), getSpecies(), getAge());
+        }
+
     }
 
     @Override
-    public double addWeight() {
-        return 0;
+    public double addWeight(double pounds) throws NumberFormatException {
+        try{
+            weight = getWeight() + pounds;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        return weight;
     }
 
     @Override
-    public double loseWeight() {
-        return 0;
+    public double loseWeight(double pounds) throws NumberFormatException {
+        try{
+            weight = getWeight() - pounds;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        return weight;
     }
 }
 

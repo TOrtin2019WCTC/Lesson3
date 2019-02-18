@@ -3,8 +3,8 @@ package Lesson3Challenge1;
 public interface Weighable {
 
 
-    public double addWeight();
-    public double loseWeight();
+    double addWeight(double pounds);
+    double loseWeight(double pounds);
 
 
 }
